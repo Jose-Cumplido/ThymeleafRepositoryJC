@@ -23,15 +23,18 @@ public class MainController {
 	private EspecieService especieService;
 
 	@GetMapping("/")
-	public String index(@RequestParam(name="idFamilia", required=false) Long idFamilia, Model model) {
+	public String index(@RequestParam(name="idFamilia", required=false) Long idFamilia,
+			@RequestParam(name="palabraClave", required=false) String palabraClave, Model model) {
 		List<Especie> especies;
 
-		if(idFamilia==null) {
+		if(idFamilia==null && palabraClave==null) {
 			especies = especieService.obtenerEspeciesAleatorios(EspecieRepository.ESPECIES_ALEATORIOS);
-		}else {
+		}else if(idFamilia!=null){
 			especies = especieService.findAllByFamilia(idFamilia);
+		}else {
+			especies = especieService.findAllByClave(palabraClave);
 		}
-
+		
 		model.addAttribute("familias", familiaService.findAll());
 
 		model.addAttribute("especies", especies);

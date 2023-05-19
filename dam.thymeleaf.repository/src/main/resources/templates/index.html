@@ -35,6 +35,14 @@
 				</button>
 				<a class="navbar-brand" href="/">Openwebinars.net Shop</a>
 			</div>
+			<div>
+				<form class="form-inline" th:acction="@{/}">
+				<div class="form-group mx-sm-3 mb-2">
+				<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="nombre o descripcion" required>
+				</div>
+				<input type="submit" class="btn btn-primary mb-2" value="buscar">
+				</form>
+			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -46,7 +54,7 @@
 							<li><a href="admin/list-especie.html"
 								th:href="@{/admin/especie/}">Gestión de especies</a></li>
 						</ul></li>
-				</ul>				
+				</ul>
 			</div>
 		</div>
 	</nav>
@@ -56,8 +64,7 @@
 			<div class="col-sm-3 col-md-2 sidebar">
 				<h3>Familias</h3>
 				<ul class="nav nav-sidebar">
-					<li th:each="familia : ${familias}">
-					<a href="#"
+					<li th:each="familia : ${familias}"><a href="#"
 						th:href="@{/(idFamilia=${familia.id})}"
 						th:text="${familia.nombre}">familia</a></li>
 				</ul>
@@ -66,7 +73,7 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1>Openwebinars.net Shop</h1>
 				<div class="row">
-					<div class="col-sm-3" th:each="especie : ${especies}">						
+					<div class="col-sm-3" th:each="especie : ${especies}">
 						<a href="#" th:href="@{/especie/{id}(id=${especie.id})}">
 							<div class="col-item">
 								<div class="photo">
@@ -76,25 +83,25 @@
 								</div>
 								<div class="info">
 									<div class="row">
-											<div class="rating col-md-4">
-												<p>
-													<span
-														th:text="${#numbers.formatDecimal(especie.getPuntuacionMedia(),1,1)}">4</span>/5
-												</p>
-											</div>
-											<div class="rating col-md-8">
-												<span class="glyphicon glyphicon-star"></span>
-											</div>
+										<div class="rating col-md-4">
+											<p>
+												<span
+													th:text="${#numbers.formatDecimal(especie.getPuntuacionMedia(),1,1)}">4</span>/5
+											</p>
+										</div>
+										<div class="rating col-md-8">
+											<span class="glyphicon glyphicon-star"></span>
 										</div>
 									</div>
 								</div>
 							</div>
-						</a>
 					</div>
+					</a>
 				</div>
-
 			</div>
+
 		</div>
+	</div>
 
 	</div>
 

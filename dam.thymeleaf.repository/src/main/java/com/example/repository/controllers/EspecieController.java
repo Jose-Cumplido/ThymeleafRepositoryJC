@@ -1,6 +1,9 @@
 package com.example.repository.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.example.repository.model.Especie;
 
 import com.example.repository.services.EspecieService;
@@ -30,7 +34,7 @@ public class EspecieController {
 	public String index(Model model) {
 		model.addAttribute("especies", especieService.findAll());
 		return "admin/list-especie";
-	}	
+	}
 	
 	@GetMapping("/nuevo")
 	public String nuevoProducto(Model model) {
@@ -48,16 +52,12 @@ public class EspecieController {
 		} else {
 			especieService.save(especie);
 			return "redirect:/admin/especie/";
-
 		}
-
 	}
 
 	@GetMapping("/editar/{id}")
 	public String editarEspecie(@PathVariable("id") Long id, Model model) {
-
 		Especie especie = especieService.findById(id);
-
 		if (especie != null) {
 			model.addAttribute("especie", especie);
 			model.addAttribute("familias", familiaService.findAll());
@@ -65,19 +65,16 @@ public class EspecieController {
 		} else {
 			return "redirect:/admin/especie/";
 		}
-
 	}
 
 	@GetMapping("/borrar/{id}")
 	public String borrarEspecie(@PathVariable("id") Long id, Model model) {
-
 		Especie especie = especieService.findById(id);
-
 		if (especie != null) {
 			especieService.delete(especie);
 		}
-
 		return "redirect:/admin/especie/";
-
 	}
+	
+	
 }

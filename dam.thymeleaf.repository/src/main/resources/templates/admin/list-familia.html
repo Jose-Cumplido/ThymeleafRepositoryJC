@@ -11,10 +11,10 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
-	
+
 <link href="../../static/css/style.css" th:href="@{/css/style.css}"
 	rel="stylesheet" />
-		
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -42,19 +42,27 @@ body {
 				</button>
 				<a class="navbar-brand" href="/">Openwebinars.net Shop</a>
 			</div>
+			<div>
+				<form class="form-inline" th:acction="@{/}">
+				<div class="form-group mx-sm-3 mb-2">
+				<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="nombre o descripcion" required>
+				</div>
+				<input type="submit" class="btn btn-primary mb-2" value="buscar">
+				</form>
+			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Opciones <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="/admin/familia/"
-								th:href="@{/admin/familia/}">Gestión de familias</a></li>
+							<li><a href="/admin/familia/" th:href="@{/admin/familia/}">Gestión
+									de familias</a></li>
 							<li><a href="/admin/especie/" th:href="@{/admin/especie/}">Gestión
 									de especies</a></li>
 						</ul></li>
 				</ul>
-				
+
 			</div>
 
 		</div>
@@ -62,10 +70,10 @@ body {
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-offset-2 col-md-8">				
+			<div class="col-md-offset-2 col-md-8">
 				<div class="pull-right">
-					<a href="form-familia.html" 
-						class="btn btn-primary">Nueva familia</a>
+					<a href="form-familia.html" class="btn btn-primary">Nueva
+						familia</a>
 
 				</div>
 				<table class="table">
@@ -82,11 +90,9 @@ body {
 								th:src="${not (#strings.isEmpty(familia.imagen))} ? ${familia.imagen} : 'http://placehold.it/48x48'"
 								class="img-responsive icono-familia" alt="imagen" /></td>
 							<td th:text="${familia.nombre}"></td>
-							<td class="operaciones"><a href="#"								
-								class="btn btn-primary">Editar</a> 
+							<td class="operaciones"><a href="#" class="btn btn-primary">Editar</a>
 								<button type="button" class="btn btn-danger" data-toggle="modal"
-									data-target="#delete-modal">Borrar</button>
-							</td>
+									data-target="#delete-modal">Borrar</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -119,7 +125,7 @@ body {
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
+
 
 
 </body>

@@ -34,14 +34,22 @@
 				</button>
 				<a class="navbar-brand" href="/">Openwebinars.net Shop</a>
 			</div>
+			<div>
+				<form class="form-inline" th:acction="@{/}">
+				<div class="form-group mx-sm-3 mb-2">
+				<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="nombre o descripcion" required>
+				</div>
+				<input type="submit" class="btn btn-primary mb-2" value="buscar">
+				</form>
+			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Opciones <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="/admin/familia/"
-								th:href="@{/admin/familia/}">Gestión de famlias</a></li>
+							<li><a href="/admin/familia/" th:href="@{/admin/familia/}">Gestión
+									de famlias</a></li>
 							<li><a href="/admin/especie/" th:href="@{/admin/especie/}">Gestión
 									de especies</a></li>
 						</ul></li>
@@ -57,23 +65,22 @@
 				<form method="post" action="#"
 					th:action="@{/admin/especie/nuevo/submit}" th:object="${especie}">
 					<h1>
-						<span th:text="${especie.id} ? 'Editar' : 'Nuevo'"></span>
-						especie
+						<span th:text="${especie.id} ? 'Editar' : 'Nuevo'"></span> especie
 					</h1>
 					<input type="hidden" th:field="*{id}" id="id" />
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('nombre')} ? 'has-error'">
-						<label class="control-label" for="nombre">Nombre</label> <input type="text"
-							class="form-control" id="nombre" placeholder="Nombre"
+						<label class="control-label" for="nombre">Nombre</label> <input
+							type="text" class="form-control" id="nombre" placeholder="Nombre"
 							th:field="*{nombre}" /> <span
 							th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
 							class="help-block" id="nombre-error">Errores</span>
 					</div>
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('imagen')} ? 'has-error'">
-						<label class="control-label" for="imagen">URL de la imagen</label> <input type="url"
-							class="form-control" id="imagen" placeholder="http://..."
-							th:field="*{imagen}"> <span
+						<label class="control-label" for="imagen">URL de la imagen</label>
+						<input type="url" class="form-control" id="imagen"
+							placeholder="http://..." th:field="*{imagen}"> <span
 							th:if="${#fields.hasErrors('imagen')}" th:errors="*{imagen}"
 							class="help-block" id="imagen-error">Errores</span>
 
@@ -83,14 +90,14 @@
 						<textarea class="form-control" id="descripcion"
 							placeholder="Descripción" rows="3" th:field="*{descripcion}"></textarea>
 					</div>
-					
+
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('familia')} ? 'has-error'">
 						<label class="control-label" for="familia">Familia</label> <select
 							th:field="*{familia}" class="form-control">
 							<option value="-1">---</option>
-							<option th:each="familia : ${familias}"
-								th:value="${familia.id}" th:text="${familia.nombre}">Familia</option>
+							<option th:each="familia : ${familias}" th:value="${familia.id}"
+								th:text="${familia.nombre}">Familia</option>
 						</select> <span th:if="${#fields.hasErrors('familia')}"
 							th:errors="*{familia}" class="help-block" id="familia-error">Errores</span>
 

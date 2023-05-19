@@ -42,18 +42,26 @@ body {
 				</button>
 				<a class="navbar-brand" href="/">Openwebinars.net Shop</a>
 			</div>
+			<div>
+				<form class="form-inline" th:acction="@{/}">
+				<div class="form-group mx-sm-3 mb-2">
+				<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="nombre o descripcion" required>
+				</div>
+				<input type="submit" class="btn btn-primary mb-2" value="buscar">
+				</form>
+			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Opciones <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="/admin/familia/"
-								th:href="@{/admin/familia/}">Gestión de familias</a></li>
+							<li><a href="/admin/familia/" th:href="@{/admin/familia/}">Gestión
+									de familias</a></li>
 							<li><a href="/admin/especie/" th:href="@{/admin/especie/}">Gestión
 									de especies</a></li>
 						</ul></li>
-				</ul>				
+				</ul>
 			</div>
 
 		</div>
@@ -63,8 +71,7 @@ body {
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10">
 				<div class="pull-right">
-					<a href="form-especie.html" 
-					th:href="@{/admin/especie/nuevo}"
+					<a href="form-especie.html" th:href="@{/admin/especie/nuevo}"
 						class="btn btn-primary">Nueva especie</a>
 
 				</div>
@@ -84,11 +91,9 @@ body {
 								              ? ${especie.imagen} : 'http://placehold.it/48x48'"
 								class="img-responsive icono-familia" alt="imagen" /></td>
 							<td th:text="${especie.nombre}"></td>
-							<td class="operaciones"><a href="#"								
-								class="btn btn-primary">Editar</a>
+							<td class="operaciones"><a href="#" class="btn btn-primary">Editar</a>
 								<button type="button" class="btn btn-danger" data-toggle="modal"
-									data-target="#delete-modal">Borrar</button>
-							</td>
+									data-target="#delete-modal">Borrar</button></td>
 						</tr>
 					</tbody>
 				</table>

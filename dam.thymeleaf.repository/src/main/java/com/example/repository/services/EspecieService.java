@@ -18,6 +18,18 @@ public class EspecieService {
 		return especieRepository.findAll();
 	}
 	
+	public List<Especie> findAllByClave(String clave) {
+		List<Especie> juegos;
+		// Convertimos la clave a un numero, si salta excepcion significa que no es un numero, 
+		// por lo que estamos buscando por el nombre y no el precio
+		try {
+			juegos = especieRepository.findByClave((clave));
+		} catch (NumberFormatException e) {
+			juegos = especieRepository.findByClave(clave);
+		}
+		return juegos;
+	}
+	
 	public List<Especie> findAllByFamilia(Familia familia) {
 		return especieRepository.findByFamilia(familia);
 	}
@@ -63,4 +75,5 @@ public class EspecieService {
 		return especieRepository.findAllById(listaIds);
 
 	}
+	
 }
