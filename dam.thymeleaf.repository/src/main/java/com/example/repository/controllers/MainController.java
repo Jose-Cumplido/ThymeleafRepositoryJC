@@ -26,20 +26,21 @@ public class MainController {
 	public String index(@RequestParam(name="idFamilia", required=false) Long idFamilia,
 			@RequestParam(name="palabraClave", required=false) String palabraClave, Model model) {
 		List<Especie> especies;
-
 		if(idFamilia==null && palabraClave==null) {
 			especies = especieService.obtenerEspeciesAleatorios(EspecieRepository.ESPECIES_ALEATORIOS);
 		}else if(idFamilia!=null){
 			especies = especieService.findAllByFamilia(idFamilia);
 		}else {
-			especies = especieService.findAllByClave(palabraClave);
+			especies = especieService.findAllBySeacrh(palabraClave);
 		}
-		
 		model.addAttribute("familias", familiaService.findAll());
-
 		model.addAttribute("especies", especies);
-
+		
+		if(palabraClave!=null) {
+			return "busqueda";
+		}else {
 		return "index";
+		}
 	}
 	
 	@GetMapping("/especie/{id}")
@@ -51,5 +52,4 @@ public class MainController {
 		}
 		return "redirect:/";
 	}
-
 }

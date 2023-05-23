@@ -1,9 +1,6 @@
 package com.example.repository.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -37,7 +34,7 @@ public class EspecieController {
 	}
 	
 	@GetMapping("/nuevo")
-	public String nuevoProducto(Model model) {
+	public String nuevaEspecie(Model model) {
 		model.addAttribute("especie",new Especie());
 		model.addAttribute("familias",this.familiaService.findAll());
 		return "admin/form-especie";
@@ -75,6 +72,4 @@ public class EspecieController {
 		}
 		return "redirect:/admin/especie/";
 	}
-	
-	
 }

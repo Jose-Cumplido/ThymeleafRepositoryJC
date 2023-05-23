@@ -13,50 +13,72 @@ import com.example.repository.repositories.EspecieRepository;
 public class EspecieService {
 	@Autowired
 	private EspecieRepository especieRepository;
-	
+
+	/**
+	 * Metodo para obtener todas las especies
+	 * @return todas las especies
+	 */
 	public List<Especie> findAll() {
 		return especieRepository.findAll();
 	}
 	
-	public List<Especie> findAllByClave(String clave) {
-		List<Especie> juegos;
-		// Convertimos la clave a un numero, si salta excepcion significa que no es un numero, 
-		// por lo que estamos buscando por el nombre y no el precio
-		try {
-			juegos = especieRepository.findByClave((clave));
-		} catch (NumberFormatException e) {
-			juegos = especieRepository.findByClave(clave);
-		}
-		return juegos;
+	/**
+	 * Metodo para ontener las especies que coincidan con la busqueda
+	 * @param clave cadena introducida en el buscador
+	 * @return lista con las coincidencias del buscador
+	 */
+	public List<Especie> findAllBySeacrh(String clave) {
+		List<Especie> especies;
+		especies = especieRepository.findBySearch((clave));
+		return especies;
 	}
-	
+
+	/**
+	 * Metodo para obtener todas las especies que pertenezcan a una familia
+	 * @param familia por la que vamos a filtrar
+	 * @return listado de especies que pertenezcan a la familia
+	 */
 	public List<Especie> findAllByFamilia(Familia familia) {
 		return especieRepository.findByFamilia(familia);
 	}
-	
+	/**
+	 * Metodo igual que el anterior pero esta vez se especifica un id
+	 * @param familiaId
+	 * @return
+	 */
 	public List<Especie> findAllByFamilia(Long familiaId) {
 		return especieRepository.findByFamiliaId(familiaId);
 	}
-	
+
 	public Especie findById(Long id) {
 		return especieRepository.findById(id).orElse(null);
 	}
 	
+	/**
+	 * 
+	 * @param especie
+	 * @return
+	 */
 	public Especie save(Especie especie) {
 		return especieRepository.save(especie);
 	}
 	
+	/**
+	 * Metodo para eliminar una especie
+	 * @param especie a eliminar
+	 * @return 
+	 */
 	public Especie delete(Especie especie) {
 		Especie result = findById(especie.getId());
 		especieRepository.delete(result);
 		return result;
 	}
-	
+
 	public int numeroEspeciesFamilia(Familia familia) {
 		return especieRepository.findNumEspeciesByFamilia(familia);
 	}
-	
-	
+
+
 	/*
 	 * Este método sirve para obtener un número de productos aleatorios.
 	 * Lo realizamos en Java para abstraernos mejor de la base de datos
@@ -75,5 +97,5 @@ public class EspecieService {
 		return especieRepository.findAllById(listaIds);
 
 	}
-	
+
 }

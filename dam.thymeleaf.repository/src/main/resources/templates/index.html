@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title></title>
+<title>ZooTopia</title>
 
 <!-- Bootstrap -->
 <link
@@ -33,12 +33,12 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Openwebinars.net Shop</a>
+				<a class="navbar-brand" href="/">ZooTopia</a>
 			</div>
 			<div>
 				<form class="form-inline" th:acction="@{/}">
 				<div class="form-group mx-sm-3 mb-2">
-				<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="nombre o descripcion" required>
+				<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="nombre o parte de la descripcion (sensible a mayusculas y minusculas)" required size="75">
 				</div>
 				<input type="submit" class="btn btn-primary mb-2" value="buscar">
 				</form>
@@ -71,7 +71,7 @@
 			</div>
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1>Openwebinars.net Shop</h1>
+				<h1>Algunas de nuestras especies: </h1>
 				<div class="row">
 					<div class="col-sm-3" th:each="especie : ${especies}">
 						<a href="#" th:href="@{/especie/{id}(id=${especie.id})}">

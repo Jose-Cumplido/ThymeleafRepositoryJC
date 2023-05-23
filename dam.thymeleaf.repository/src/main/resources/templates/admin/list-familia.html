@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title></title>
+<title>Familias</title>
 
 <!-- Bootstrap -->
 <link
@@ -40,15 +40,7 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Openwebinars.net Shop</a>
-			</div>
-			<div>
-				<form class="form-inline" th:acction="@{/}">
-				<div class="form-group mx-sm-3 mb-2">
-				<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="nombre o descripcion" required>
-				</div>
-				<input type="submit" class="btn btn-primary mb-2" value="buscar">
-				</form>
+				<a class="navbar-brand" href="/">ZooTopia</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -72,8 +64,8 @@ body {
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8">
 				<div class="pull-right">
-					<a href="form-familia.html" class="btn btn-primary">Nueva
-						familia</a>
+					<a href="form-familia.html" th:href="@{/admin/familia/nueva}"
+					class="btn btn-primary">Nueva familia</a>
 
 				</div>
 				<table class="table">

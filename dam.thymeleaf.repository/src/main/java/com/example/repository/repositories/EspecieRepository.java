@@ -3,7 +3,6 @@ package com.example.repository.repositories;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import com.example.repository.model.Especie;
 import com.example.repository.model.Familia;
@@ -22,6 +21,6 @@ public interface EspecieRepository extends JpaRepository<Especie, Long> {
 	public int findNumEspeciesByFamilia(Familia familia);
 
 	@Query("SELECT e FROM Especie e WHERE e.nombre LIKE %?1% OR e.descripcion LIKE %?1%")
-	public List<Especie> findByClave(String palabraClave);
+	public List<Especie> findBySearch(String palabraClave);
 	
 }
